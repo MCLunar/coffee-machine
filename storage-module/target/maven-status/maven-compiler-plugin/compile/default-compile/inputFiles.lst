@@ -1,0 +1,11 @@
+/Users/marc/IdeaProjects/coffee-machine/storage-module/src/main/java/fr/imt/coffee/storage/cupboard/container/Mug.java
+/Users/marc/IdeaProjects/coffee-machine/storage-module/src/main/java/fr/imt/coffee/storage/cupboard/container/Cup.java
+/Users/marc/IdeaProjects/coffee-machine/storage-module/src/main/java/fr/imt/coffee/storage/cupboard/FabricCupboardContainer.java
+/Users/marc/IdeaProjects/coffee-machine/storage-module/src/main/java/fr/imt/coffee/storage/cupboard/coffee/type/CoffeeType.java
+/Users/marc/IdeaProjects/coffee-machine/storage-module/src/main/java/fr/imt/coffee/storage/cupboard/container/CoffeeContainer.java
+/Users/marc/IdeaProjects/coffee-machine/storage-module/src/main/java/fr/imt/coffee/storage/cupboard/container/CoffeeMug.java
+/Users/marc/IdeaProjects/coffee-machine/storage-module/src/main/java/fr/imt/coffee/storage/cupboard/exception/CupNotEmptyException.java
+/Users/marc/IdeaProjects/coffee-machine/storage-module/src/main/java/fr/imt/coffee/storage/cupboard/container/CoffeeCup.java
+/Users/marc/IdeaProjects/coffee-machine/storage-module/src/main/java/fr/imt/coffee/storage/cupboard/exception/ExceptionContainerCreation.java
+/Users/marc/IdeaProjects/coffee-machine/storage-module/src/main/java/fr/imt/coffee/storage/cupboard/container/Container.java
+/Users/marc/IdeaProjects/coffee-machine/storage-module/src/main/java/fr/imt/coffee/Main.java
