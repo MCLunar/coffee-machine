@@ -1,0 +1,14 @@
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/machine/component/WaterTank.java
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/machine/exception/CoffeeTypeCupDifferentOfCoffeeTypeTankException.java
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/machine/EspressoCoffeeMachine.java
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/Main.java
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/machine/component/SteamPipe.java
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/machine/exception/LackOfWaterInTankException.java
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/machine/component/Tank.java
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/machine/CoffeeMachine.java
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/machine/component/ElectricalResistance.java
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/machine/exception/MachineNotPluggedException.java
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/machine/component/BeanTank.java
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/machine/component/WaterPump.java
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/machine/component/CoffeeGrinder.java
+/Users/marc/IdeaProjects/coffee-machine/machine-module/src/main/java/fr/imt/coffee/machine/exception/CannotMakeCremaWithSimpleCoffeeMachine.java
