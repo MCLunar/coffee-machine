@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="24.485" tests="9" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="24.499" tests="9" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -13,7 +13,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="FR"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/23.0.1/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/marc/IdeaProjects/coffee-machine/machine-module/target/surefire/surefirebooter-20241223172730361_3.jar /Users/marc/IdeaProjects/coffee-machine/machine-module/target/surefire 2024-12-23T17-27-30_240-jvmRun1 surefire-20241223172730361_1tmp surefire_0-20241223172730361_2tmp"/>
+    <property name="sun.java.command" value="/Users/marc/IdeaProjects/coffee-machine/machine-module/target/surefire/surefirebooter-20241223175027701_3.jar /Users/marc/IdeaProjects/coffee-machine/machine-module/target/surefire 2024-12-23T17-50-27_585-jvmRun1 surefire-20241223175027701_1tmp surefire_0-20241223175027701_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="CoffeeMachineUnitTest"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/marc/IdeaProjects/coffee-machine/machine-module/target/surefire/surefirebooter-20241223172730361_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/marc/IdeaProjects/coffee-machine/machine-module/target/surefire/surefirebooter-20241223175027701_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="23.0.1"/>
@@ -60,13 +60,13 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testCoffeeTypeMismatchException" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="0.556"/>
-  <testcase name="testMachineFailureTrue" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="0.066"/>
-  <testcase name="testNbCoffeeMadeIncrement" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="11.918"/>
-  <testcase name="testLackOfWaterInTankException" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="0.006"/>
-  <testcase name="testCoffeeContainerCapacityMatchesInputContainer" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="11.908"/>
-  <testcase name="testCannotMakeCremaWithSimpleCoffeeMachine" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="0.004"/>
-  <testcase name="testPlugMachine" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="0.002"/>
+  <testcase name="testCoffeeTypeMismatchException" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="0.563"/>
+  <testcase name="testMachineFailureTrue" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="0.067"/>
+  <testcase name="testNbCoffeeMadeIncrement" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="11.913"/>
+  <testcase name="testLackOfWaterInTankException" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="0.003"/>
+  <testcase name="testCoffeeContainerCapacityMatchesInputContainer" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="11.917"/>
+  <testcase name="testCannotMakeCremaWithSimpleCoffeeMachine" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="0.005"/>
+  <testcase name="testPlugMachine" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="0.001"/>
   <testcase name="testMakeACoffeeCupNotEmptyException" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="0.002"/>
-  <testcase name="testMachineFailureFalse" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="0.002"/>
+  <testcase name="testMachineFailureFalse" classname="fr.imt.coffee.machine.CoffeeMachineUnitTest" time="0.003"/>
 </testsuite>

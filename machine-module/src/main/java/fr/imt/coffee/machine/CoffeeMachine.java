@@ -121,7 +121,6 @@ public class CoffeeMachine {
             coffeeContainer = new CoffeeMug((Mug) container, coffeeType);
 
         coffeeContainer.setEmpty(false);
-        coffeeContainer.setCapacity(container.getCapacity());
         //incrémentation nombre café fait
         nbCoffeeMade++;
         return coffeeContainer;
@@ -145,6 +144,10 @@ public class CoffeeMachine {
         "- electrical resistance : " + electricalResistance + "\n" +
         "- is plugged : " + isPlugged + "\n"+
         "and made " + nbCoffeeMade + " coffees";
+    }
+
+    public void incrementCoffeeCount() {
+        this.nbCoffeeMade++;
     }
 
     public WaterTank getWaterTank() {
@@ -193,4 +196,8 @@ public class CoffeeMachine {
     public BeanTank getBeanTank() {
         return beanTank;
     }
+
+
+
+
 }

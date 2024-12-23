@@ -38,7 +38,7 @@ public class EspressoCoffeeMachine extends CoffeeMachine{
      */
     public CoffeeContainer makeACoffee(Container container, CoffeeType coffeeType) throws LackOfWaterInTankException, InterruptedException, MachineNotPluggedException, CupNotEmptyException, CoffeeTypeCupDifferentOfCoffeeTypeTankException {
         if(!isPlugged()){
-            throw new LackOfWaterInTankException("You must plug your coffee machine");
+            throw new MachineNotPluggedException("You must plug your coffee machine");
         }
 
         if (getWaterTank().getActualVolume() < container.getCapacity()){
@@ -71,6 +71,15 @@ public class EspressoCoffeeMachine extends CoffeeMachine{
             coffeeContainer = new CoffeeMug((Mug) container, coffeeType);
 
         coffeeContainer.setEmpty(false);
+
+        incrementCoffeeCount();
+
         return coffeeContainer;
     }
+
+
+    public BeanTank getSecondaryBeanTank() {
+        return secondaryBeanTank;
+    }
+
 }
