@@ -32,6 +32,14 @@ public class ExpressoCoffeeMachineTest {
         Mockito.when(mockCup.getCapacity()).thenReturn(0.25);
         Mockito.when(mockCup.isEmpty()).thenReturn(true);
 
+        //On créé un mock de l'objet random
+        Random randomMock = Mockito.mock(Random.class, Mockito.withSettings().withoutAnnotations());
+        //On vient ensuite stubber la méthode nextGaussian pour pouvoir controler la valeur retournée
+        //ici on veut qu'elle retourne 0.6
+        Mockito.when(randomMock.nextGaussian()).thenReturn(0.6);
+        //On injecte ensuite le mock créé dans la machine à café
+        espressoMachineUnderTest.setRandomGenerator(randomMock);
+
         // Préparation de la machine
         espressoMachineUnderTest.addWaterInTank(1); // Ajouter de l'eau
         espressoMachineUnderTest.getBeanTank().increaseCoffeeVolumeInTank(5, CoffeeType.ARABICA); // Ajouter des grains de type ARABICA
