@@ -36,7 +36,7 @@ public class CoffeeMachine {
         this.coffeeGrinder = new CoffeeGrinder(2000);
         this.isPlugged = false;
         this.isOutOfOrder = false;
-        this.nbCoffeeMade = 15;
+        this.nbCoffeeMade = 0;
         this.randomGenerator = new Random();
     }
 
@@ -120,7 +120,9 @@ public class CoffeeMachine {
         if(container instanceof Mug)
             coffeeContainer = new CoffeeMug((Mug) container, coffeeType);
 
-        coffeeContainer.setEmpty(true);
+        coffeeContainer.setEmpty(false);
+        //incrémentation nombre café fait
+        nbCoffeeMade++;
         return coffeeContainer;
     }
 

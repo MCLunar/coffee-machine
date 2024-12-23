@@ -163,6 +163,28 @@ public class CoffeeMachineUnitTest {
         });
     }
 
+    @Test
+    public void testNbCoffeeMadeIncrement() throws InterruptedException {
+        Cup mockCup = Mockito.mock(Cup.class);
+        Mockito.when(mockCup.getCapacity()).thenReturn(0.25);
+        Mockito.when(mockCup.isEmpty()).thenReturn(true);
+
+        coffeeMachineUnderTest.addWaterInTank(1);
+        coffeeMachineUnderTest.addCoffeeInBeanTank(5, CoffeeType.ARABICA);
+        coffeeMachineUnderTest.plugToElectricalPlug();
+
+        int initialCoffeeCount = coffeeMachineUnderTest.getNbCoffeeMade();
+
+        try {
+            // Faire le café
+            coffeeMachineUnderTest.makeACoffee(mockCup, CoffeeType.ARABICA);
+        } catch (Exception e) {
+            Assertions.fail("Une exception a été levée lors de la préparation du café: " + e.getMessage());
+        }
+
+        Assertions.assertEquals(initialCoffeeCount + 1, coffeeMachineUnderTest.getNbCoffeeMade());
+    }
+
     @AfterEach
     public void afterTest(){
 
