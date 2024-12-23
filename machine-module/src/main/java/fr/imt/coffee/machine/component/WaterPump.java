@@ -25,6 +25,12 @@ public class WaterPump {
      * @throws InterruptedException Exception levée en cas de problèmes lors du sleep par le Thread
      */
     public double pumpWater(double waterVolume, WaterTank waterTank) throws InterruptedException {
+        if (waterVolume <= 0) {
+            throw new IllegalArgumentException("Le volume d'eau à pomper doit être positif.");
+        }
+        if (waterTank.getActualVolume() < waterVolume) {
+            throw new IllegalArgumentException("Pas assez d'eau dans le réservoir pour pomper.");
+        }
         double pumpingTime = (waterVolume / pumpingCapacity) * 1000 * 2;
         logger.info("Pumping time : "  +  pumpingTime);
         logger.info("Pumping...");

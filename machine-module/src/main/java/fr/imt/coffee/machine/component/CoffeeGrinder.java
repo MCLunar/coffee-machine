@@ -23,6 +23,10 @@ public class CoffeeGrinder {
      * @throws InterruptedException Exception levée en cas de problèmes lors du sleep par le Thread
      */
     public double grindCoffee(BeanTank beanTank) throws InterruptedException {
+        if (grindingTime < 0) {
+            throw new IllegalArgumentException("Le temps de mouture ne peut pas être négatif.");
+        }
+
         logger.info("Grinding time : "  +  grindingTime);
         logger.info("Grinding...");
         Thread.sleep(grindingTime);
