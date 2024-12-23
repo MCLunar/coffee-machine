@@ -1,5 +1,7 @@
 package fr.imt.coffee.machine;
 
+import fr.imt.coffee.machine.exception.CoffeeTypeCupDifferentOfCoffeeTypeTankException;
+import fr.imt.coffee.machine.exception.LackOfWaterInTankException;
 import fr.imt.coffee.storage.cupboard.coffee.type.CoffeeType;
 import fr.imt.coffee.storage.cupboard.container.Cup;
 import fr.imt.coffee.storage.cupboard.exception.CupNotEmptyException;
@@ -119,6 +121,46 @@ public class CoffeeMachineUnitTest {
         Assertions.assertThrows(CupNotEmptyException.class, ()->{
                 coffeeMachineUnderTest.makeACoffee(mockCup, CoffeeType.MOKA);
             });
+    }
+
+
+
+    @Test
+    public void testCoffeeTypeMismatchException() {
+        Cup mockCup = Mockito.mock(Cup.class);
+        Mockito.when(mockCup.getCapacity()).thenReturn(0.25);  // La tasse a une capacité de 0,25L
+        Mockito.when(mockCup.isEmpty()).thenReturn(true);     // La tasse est vide
+
+        coffeeMachineUnderTest.plugToElectricalPlug(); // La machine est branchée
+
+
+        // Assume the bean tank is set for ARABICA coffee
+        coffeeMachineUnderTest.addCoffeeInBeanTank(5, CoffeeType.ARABICA); // Le réservoir de grains est rempli de café ARABICA
+        coffeeMachineUnderTest.addWaterInTank(1); // Ajout d'eau suffisante pour faire le café (1L)
+
+
+        // On vérifie que l'exception CoffeeTypeCupDifferentOfCoffeeTypeTankException est levée si on tente de faire un café de type MOKA
+        Assertions.assertThrows(CoffeeTypeCupDifferentOfCoffeeTypeTankException.class, () -> {
+            coffeeMachineUnderTest.makeACoffee(mockCup, CoffeeType.MOKA); // Demande un café de type MOKA alors que le réservoir contient du café ARABICA
+        });
+    }
+
+    @Test
+    public void testLackOfWaterInTankException() {
+        // Mock a cup with a capacity that exceeds the current water in the tank
+        Cup mockCup = Mockito.mock(Cup.class);
+        Mockito.when(mockCup.getCapacity()).thenReturn(1.5);  // La tasse a une capacité de 1,5L
+        Mockito.when(mockCup.isEmpty()).thenReturn(true);     // La tasse est vide
+
+
+        coffeeMachineUnderTest.plugToElectricalPlug(); // La machine est branchée
+
+        coffeeMachineUnderTest.addWaterInTank(1); // Ajout de seulement 1L d'eau dans le réservoir
+
+        // On vérifie que l'exception LackOfWaterInTankException est levée si on essaie de faire du café
+        Assertions.assertThrows(LackOfWaterInTankException.class, () -> {
+            coffeeMachineUnderTest.makeACoffee(mockCup, CoffeeType.MOKA);  // Tente de faire du café MOKA
+        });
     }
 
     @AfterEach
