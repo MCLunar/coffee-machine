@@ -99,15 +99,15 @@ public class CoffeeMachine {
             throw new CoffeeTypeCupDifferentOfCoffeeTypeTankException("The type of coffee to be made in the cup is different from that in the tank.");
         }
 
+        if(coffeeType.toString().contains("_CREMA")){
+            throw new CannotMakeCremaWithSimpleCoffeeMachine("You cannot make an espresso with a CoffeeMachine, please use EspressoCoffeeMachine");
+        }
+
         coffeeMachineFailure();
 
         if(isOutOfOrder){
             logger.warn("The machine is out of order. Please reset the coffee machine");
             return null;
-        }
-
-        if(coffeeType.toString().contains("_CREMA")){
-            throw new CannotMakeCremaWithSimpleCoffeeMachine("You cannot make an espresso with a CoffeeMachine, please use EspressoCoffeeMachine");
         }
 
         electricalResistance.waterHeating(container.getCapacity());
@@ -121,6 +121,7 @@ public class CoffeeMachine {
             coffeeContainer = new CoffeeMug((Mug) container, coffeeType);
 
         coffeeContainer.setEmpty(false);
+        coffeeContainer.setCapacity(container.getCapacity());
         //incrémentation nombre café fait
         nbCoffeeMade++;
         return coffeeContainer;

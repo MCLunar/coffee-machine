@@ -1,8 +1,10 @@
 package fr.imt.coffee.machine;
 
+import fr.imt.coffee.machine.exception.CannotMakeCremaWithSimpleCoffeeMachine;
 import fr.imt.coffee.machine.exception.CoffeeTypeCupDifferentOfCoffeeTypeTankException;
 import fr.imt.coffee.machine.exception.LackOfWaterInTankException;
 import fr.imt.coffee.storage.cupboard.coffee.type.CoffeeType;
+import fr.imt.coffee.storage.cupboard.container.CoffeeContainer;
 import fr.imt.coffee.storage.cupboard.container.Cup;
 import fr.imt.coffee.storage.cupboard.exception.CupNotEmptyException;
 import org.junit.jupiter.api.AfterEach;
@@ -165,6 +167,10 @@ public class CoffeeMachineUnitTest {
 
     @Test
     public void testNbCoffeeMadeIncrement() throws InterruptedException {
+        Random randomMock = Mockito.mock(Random.class, Mockito.withSettings().withoutAnnotations());
+        Mockito.when(randomMock.nextGaussian()).thenReturn(0.6);
+        coffeeMachineUnderTest.setRandomGenerator(randomMock);
+
         Cup mockCup = Mockito.mock(Cup.class);
         Mockito.when(mockCup.getCapacity()).thenReturn(0.25);
         Mockito.when(mockCup.isEmpty()).thenReturn(true);
@@ -183,6 +189,52 @@ public class CoffeeMachineUnitTest {
         }
 
         Assertions.assertEquals(initialCoffeeCount + 1, coffeeMachineUnderTest.getNbCoffeeMade());
+    }
+
+    @Test
+    public void testCannotMakeCremaWithSimpleCoffeeMachine() {
+        // Mock a Cup instance
+        Cup mockCup = Mockito.mock(Cup.class);
+        Mockito.when(mockCup.getCapacity()).thenReturn(0.25);
+        Mockito.when(mockCup.isEmpty()).thenReturn(true);
+
+        // Add water and coffee beans of type ARABICA_CREMA
+        coffeeMachineUnderTest.addWaterInTank(1);
+        coffeeMachineUnderTest.addCoffeeInBeanTank(5, CoffeeType.ARABICA_CREMA);
+        coffeeMachineUnderTest.plugToElectricalPlug();
+
+        // Assert that CannotMakeCremaWithSimpleCoffeeMachine is thrown
+        Assertions.assertThrows(CannotMakeCremaWithSimpleCoffeeMachine.class, () -> {
+            coffeeMachineUnderTest.makeACoffee(mockCup, CoffeeType.ARABICA_CREMA);
+        });
+    }
+
+    @Test
+    public void testCoffeeContainerCapacityMatchesInputContainer() throws InterruptedException {
+        Random randomMock = Mockito.mock(Random.class, Mockito.withSettings().withoutAnnotations());
+        Mockito.when(randomMock.nextGaussian()).thenReturn(0.6);
+        coffeeMachineUnderTest.setRandomGenerator(randomMock);
+
+        // Mock d'un contenant (Cup) avec une capacité définie
+        Cup mockCup = Mockito.mock(Cup.class);
+        Mockito.when(mockCup.getCapacity()).thenReturn(0.25);
+        Mockito.when(mockCup.isEmpty()).thenReturn(true);
+
+        // Préparation de la machine
+        coffeeMachineUnderTest.addWaterInTank(1); // Ajouter de l'eau
+        coffeeMachineUnderTest.addCoffeeInBeanTank(5, CoffeeType.ARABICA); // Ajouter des grains de café
+        coffeeMachineUnderTest.plugToElectricalPlug(); // Brancher la machine
+
+        try {
+            // Faire un café
+            CoffeeContainer preparedCoffee = coffeeMachineUnderTest.makeACoffee(mockCup, CoffeeType.ARABICA);
+
+            // Vérification : La capacité du contenant préparé doit correspondre à celle du contenant d'entrée
+            Assertions.assertEquals(mockCup.getCapacity(), preparedCoffee.getCapacity(),
+                    "The capacity of the coffee container does not match the input container's capacity.");
+        } catch (Exception e) {
+            Assertions.fail("An exception was thrown while making coffee: " + e.getMessage());
+        }
     }
 
     @AfterEach
