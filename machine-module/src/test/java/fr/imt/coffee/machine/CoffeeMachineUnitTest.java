@@ -3,6 +3,7 @@ package fr.imt.coffee.machine;
 import fr.imt.coffee.machine.exception.CannotMakeCremaWithSimpleCoffeeMachine;
 import fr.imt.coffee.machine.exception.CoffeeTypeCupDifferentOfCoffeeTypeTankException;
 import fr.imt.coffee.machine.exception.LackOfWaterInTankException;
+import fr.imt.coffee.machine.exception.MachineNotPluggedException;
 import fr.imt.coffee.storage.cupboard.coffee.type.CoffeeType;
 import fr.imt.coffee.storage.cupboard.container.CoffeeContainer;
 import fr.imt.coffee.storage.cupboard.container.Cup;
@@ -166,7 +167,7 @@ public class CoffeeMachineUnitTest {
     }
 
     @Test
-    public void testNbCoffeeMadeIncrement() throws InterruptedException {
+    public void testNbCoffeeMadeIncrement() throws LackOfWaterInTankException, InterruptedException, MachineNotPluggedException, CupNotEmptyException, CoffeeTypeCupDifferentOfCoffeeTypeTankException, CannotMakeCremaWithSimpleCoffeeMachine {
         Random randomMock = Mockito.mock(Random.class, Mockito.withSettings().withoutAnnotations());
         Mockito.when(randomMock.nextGaussian()).thenReturn(0.6);
         coffeeMachineUnderTest.setRandomGenerator(randomMock);
@@ -181,12 +182,7 @@ public class CoffeeMachineUnitTest {
 
         int initialCoffeeCount = coffeeMachineUnderTest.getNbCoffeeMade();
 
-        try {
-            // Faire le café
-            coffeeMachineUnderTest.makeACoffee(mockCup, CoffeeType.ARABICA);
-        } catch (Exception e) {
-            Assertions.fail("Une exception a été levée lors de la préparation du café: " + e.getMessage());
-        }
+        coffeeMachineUnderTest.makeACoffee(mockCup, CoffeeType.ARABICA);
 
         Assertions.assertEquals(initialCoffeeCount + 1, coffeeMachineUnderTest.getNbCoffeeMade());
     }
